@@ -1,18 +1,13 @@
-import './globals.css'
+import { PropsWithChildren } from "react";
+import "./globals.css";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+type props = PropsWithChildren;
+
+export default function RootLayout(props: props) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>{children}</body>
+      <body>{props.children}</body>
     </html>
-  )
+  );
 }
