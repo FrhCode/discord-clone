@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
-import "./globals.css";
+import "@/styles/globals.scss";
+import TooltipWatcher from "@/components/TooltipWatcher";
 
 type props = PropsWithChildren;
 
@@ -7,7 +8,10 @@ export default function RootLayout(props: props) {
   return (
     <html lang="en">
       <head />
-      <body>{props.children}</body>
+      <body className="">
+        {props.children}
+        <TooltipWatcher />
+      </body>
     </html>
   );
 }

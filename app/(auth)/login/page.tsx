@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useEffect } from "react";
 
 export default function login() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function login() {
             </span>
           </Link>
         </div>
-        <button className="w-full rounded-md bg-indigo-700 py-3 font-medium text-white duration-150 hover:bg-indigo-800">
+        <button className="helper w-full rounded-md bg-indigo-700 py-3 font-medium text-white duration-150 hover:bg-indigo-800">
           Login
         </button>
         <span className="text-xs">

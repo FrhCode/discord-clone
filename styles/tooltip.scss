@@ -1,0 +1,80 @@
+[data-tooltip],
+[data-tooltip-selector] {
+  --transition-duration: 150ms;
+  @apply relative cursor-pointer;
+}
+
+[data-tooltip]::after,
+[data-tooltip]::before {
+  --border-size: 6px;
+  --scale: 0;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:hover:before {
+  --scale: 1;
+}
+
+[data-tooltip][data-tooltip-position="right"]::after {
+  --top: 50%;
+  --left: 100%;
+  --translateY: -50%;
+  --translateX: 0%;
+  --transform-origin: right center;
+
+  @apply border-r-slate-400 #{!important};
+}
+
+[data-tooltip][data-tooltip-position="right"]::before {
+  --top: 50%;
+  --left: calc(var(--border-size) + 100%);
+  --translateY: -50%;
+  --translateX: calc(var(--border-size) - 1.2px);
+  --transform-origin: left center;
+}
+
+[data-tooltip][data-tooltip-position="top"]::before,
+[data-tooltip]:not([data-tooltip-position])::before {
+  --left: 50%;
+  --top: calc(-1 * var(--border-size));
+  --translateY: -100%;
+  --translateX: -50%;
+  --transform-origin: bottom center;
+}
+
+[data-tooltip][data-tooltip-position="top"]::after,
+[data-tooltip]:not([data-tooltip-position])::after {
+  --top: 0;
+  --left: 50%;
+  --translateY: calc(-1 * var(--border-size));
+  --translateX: -50%;
+  --transform-origin: top center;
+
+  @apply border-t-slate-400 #{!important};
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  left: var(--left);
+  top: var(--top);
+  transform: translateX(var(--translateX)) translateY(var(--translateY))
+    scale(var(--scale));
+  transition-duration: var(--transition-duration);
+  transform-origin: var(--transform-origin);
+
+  @apply absolute whitespace-nowrap rounded bg-slate-400 p-2 font-semibold text-gray-100;
+}
+
+[data-tooltip]::after {
+  content: "";
+  border: var(--border-size) solid transparent;
+  top: var(--top);
+  left: var(--left);
+  transition-duration: var(--transition-duration);
+  transform-origin: var(--transform-origin);
+
+  transform: translateX(var(--translateX)) translateY(var(--translateY))
+    scale(var(--scale));
+
+  @apply absolute;
+}

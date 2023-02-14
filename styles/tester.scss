@@ -1,0 +1,16 @@
+.pembantu {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+}
+
+.pembantu::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  background: white;
+  transform: translateX(100%);
+}

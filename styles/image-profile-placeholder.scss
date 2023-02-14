@@ -1,0 +1,7 @@
+[data-placeholder-image] {
+  @apply flex items-center justify-center;
+}
+[data-placeholder-image]::after {
+  content: attr(data-placeholder-image);
+  @apply font-medium;
+}
